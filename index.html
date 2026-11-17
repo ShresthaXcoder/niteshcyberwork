@@ -27,7 +27,11 @@
   "telephone":"+91-78703-00293",
   "email":"nitdbg@gmail.com",
   "address":{"@type":"PostalAddress","streetAddress":"C/o Naveen Electronics, opposite Nerolac Paints, near C.M. Science College, Lalbag","addressLocality":"Darbhanga","addressRegion":"Bihar","postalCode":"846004","addressCountry":"IN"},
-  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"20:00"}],
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"20:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"11:00","closes":"19:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday"],"opens":"12:00","closes":"15:00","description":"Important work only"}
+  ],
   "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","reviewCount":"22"}
 }
 </script>
@@ -581,6 +585,20 @@
   .hours div{display:flex;justify-content:space-between;gap:1rem;font-size:.88rem;color:var(--text-dim);padding-bottom:.35rem;border-bottom:1px dashed var(--border)}
   .hours div:last-child{border:0;padding-bottom:0}
   .hours b{color:var(--text);font-weight:500}
+  .openbadge{
+    display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .75rem;border-radius:100px;
+    font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+    border:1px solid var(--border-strong);background:rgba(255,255,255,.04);color:var(--text-dim);
+  }
+  .ob-dot{width:7px;height:7px;border-radius:50%;background:var(--text-faint);flex:none}
+  .openbadge.is-open{border-color:rgba(34,160,107,.45);background:rgba(34,160,107,.12);color:#8fe8bd}
+  .openbadge.is-open .ob-dot{background:#3ddc97;box-shadow:0 0 0 4px rgba(34,160,107,.18)}
+  .openbadge.is-closed{border-color:rgba(200,73,60,.35);background:rgba(200,73,60,.1);color:#f0a79e}
+  .openbadge.is-closed .ob-dot{background:#e0705f;box-shadow:0 0 0 4px rgba(200,73,60,.16)}
+  @media (prefers-color-scheme: light){
+    .openbadge.is-open{color:#0d6a45}
+    .openbadge.is-closed{color:#8f2f25}
+  }
   .mapbox{border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;background:linear-gradient(150deg,var(--surface-3),var(--surface));display:flex;flex-direction:column;box-shadow:var(--shadow-1)}
   .mapbox__art{
     flex:1;min-height:236px;position:relative;display:grid;place-items:center;
@@ -721,6 +739,9 @@
           </a>
           <a class="btn btn--ghost" href="#services">See all services</a>
         </div>
+        <span class="openbadge" style="margin-top:1rem">
+          <span class="ob-dot"></span><span class="ob-text">Open now</span>
+        </span>
         <div class="hero__stats">
           <div>
             <div class="stat__n"><span data-count="4.5" data-dec="1">4.5</span>
@@ -729,8 +750,8 @@
             <div class="stat__l">Google rating · <span data-count="22">22</span> reviews</div>
           </div>
           <div>
-            <div class="stat__n">Mon–Sat</div>
-            <div class="stat__l">8:00 AM – 8:00 PM</div>
+            <div class="stat__n">9 AM – 8 PM</div>
+            <div class="stat__l">Mon–Fri · Sat 11–7 · Sun 12–3</div>
           </div>
           <div>
             <div class="stat__n">CSC</div>
@@ -815,7 +836,7 @@
       </div>
       <div class="trust__item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
-        <div><div class="trust__k">Open 6 days</div><div class="trust__s">8 AM – 8 PM, Mon–Sat</div></div>
+        <div><div class="trust__k">Open all 7 days</div><div class="trust__s">Mon–Fri 9–8 · Sat 11–7 · Sun 12–3</div></div>
       </div>
       <div class="trust__item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13l3 3v11H4z"/><path d="M8 9h8M8 13h8"/></svg>
@@ -1244,9 +1265,13 @@
               <div style="flex:1">
                 <div class="info__k">Opening hours</div>
                 <div class="hours">
-                  <div><span>Monday – Saturday</span><b>8:00 AM – 8:00 PM</b></div>
-                  <div><span>Sunday</span><b>Closed</b></div>
+                  <div><span>Monday – Friday</span><b>9:00 AM – 8:00 PM</b></div>
+                  <div><span>Saturday</span><b>11:00 AM – 7:00 PM</b></div>
+                  <div><span>Sunday <em style="font-style:normal;color:var(--text-faint);font-size:.8em">important work only</em></span><b>12:00 PM – 3:00 PM</b></div>
                 </div>
+                <span class="openbadge" style="margin-top:.9rem">
+                  <span class="ob-dot"></span><span class="ob-text">Open now</span>
+                </span>
               </div>
             </li>
           </ul>
@@ -1297,8 +1322,9 @@
       </div>
       <div class="foot__col">
         <b>Hours</b>
-        <span>Mon–Sat · 8:00 AM – 8:00 PM</span>
-        <span>Sunday closed</span>
+        <span>Mon–Fri · 9:00 AM – 8:00 PM</span>
+        <span>Sat · 11:00 AM – 7:00 PM</span>
+        <span>Sun · 12:00 PM – 3:00 PM (important work)</span>
         <span>Lalbag, Darbhanga 846004</span>
       </div>
     </div>
@@ -1458,6 +1484,41 @@
   });
   $('#lbClose').addEventListener('click', function(){ lb.close(); });
   lb.addEventListener('click', function(e){ if(e.target === lb) lb.close(); });
+
+  /* ---------- live open / closed (IST) ---------- */
+  var SCHEDULE = {0:{o:720,c:900,note:'important work only'},1:{o:540,c:1200},2:{o:540,c:1200},3:{o:540,c:1200},4:{o:540,c:1200},5:{o:540,c:1200},6:{o:660,c:1140}};
+  var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function istNow(){
+    var d = new Date();
+    return new Date(d.getTime() + (d.getTimezoneOffset() * 60000) + (5.5 * 3600000));
+  }
+  function fmt(mins){
+    var h = Math.floor(mins / 60), m = mins % 60, ap = h >= 12 ? 'PM' : 'AM', hh = h % 12; if(hh === 0) hh = 12;
+    return hh + (m ? ':' + (m < 10 ? '0' + m : m) : '') + ' ' + ap;
+  }
+  function updateOpenBadge(){
+    var now = istNow(), day = now.getDay(), mins = now.getHours() * 60 + now.getMinutes();
+    var today = SCHEDULE[day], label, open = false;
+    if(mins >= today.o && mins < today.c){
+      open = true;
+      label = 'Open now · closes ' + fmt(today.c) + (today.note ? ' · ' + today.note : '');
+    } else if(mins < today.o){
+      label = 'Closed · opens ' + fmt(today.o) + (today.note ? ' · ' + today.note : '');
+    } else {
+      for(var i = 1; i <= 7; i++){
+        var d2 = (day + i) % 7, s2 = SCHEDULE[d2];
+        label = 'Closed · opens ' + (i === 1 ? 'tomorrow' : DAYS[d2]) + ' ' + fmt(s2.o) + (s2.note ? ' · ' + s2.note : '');
+        break;
+      }
+    }
+    document.querySelectorAll('.openbadge').forEach(function(el){
+      el.classList.toggle('is-open', open);
+      el.classList.toggle('is-closed', !open);
+      var t = el.querySelector('.ob-text'); if(t) t.textContent = label;
+    });
+  }
+  updateOpenBadge();
+  setInterval(updateOpenBadge, 60000);
 
   /* ---------- copy number ---------- */
   var copyBtn = document.getElementById('copyNum');

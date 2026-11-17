@@ -5,6 +5,7 @@ One-page website for **Nitesh Cyber**, a CSC e-Governance centre at Lalbag, Darb
 - Live site: https://shresthaxcoder.github.io/niteshcyberwork/
 - Phone / WhatsApp: +91 78703 00293
 - Email: nitdbg@gmail.com
+- Hours: Mon–Fri 9:00 AM – 8:00 PM · Sat 11:00 AM – 7:00 PM · Sun 12:00 PM – 3:00 PM (important work only)
 - Address: C/o Naveen Electronics, opposite Nerolac Paints, near C.M. Science College, Lalbag, Darbhanga, Bihar 846004
 
 ## Editing the site
